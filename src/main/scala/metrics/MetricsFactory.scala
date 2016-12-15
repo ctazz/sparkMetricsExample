@@ -8,7 +8,7 @@ import nl.grons.metrics.scala.{Counter => NlGronsCounter, Gauge => NlGronsGauge,
 import scala.concurrent.{ExecutionContext, Future}
 
 //We're only abstracting the DropWizard metrics because we might want to
-//use Application Instance metrics instead in some situations, and we'd
+//use Application Insights metrics instead in some environments, and we'd
 //like to be able to swap between the two without bothering the rest
 //of the codebase.
 sealed trait Metric
