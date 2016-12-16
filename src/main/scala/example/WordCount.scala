@@ -12,11 +12,14 @@ object WordCount {
       conf.set("spark.metrics.conf", "src/main/resources/metrics.properties")
       val sc = new SparkContext(conf)
 
-      val customSource = new CustomSource("custom.subpath")
+      val customSource1 = new CustomSource("custom.subpath1")
+      val customSource2 = new CustomSource("custom.subpath2")
 
       //a metric must be created before its associated source registry is registered!
-      val counter: metrics.Counter =  metrics.MetricsFactory.counter("ourOwnCounter"*5)
-      SparkEnv.get.metricsSystem.registerSource(customSource)
+      val counter1  =  customSource1.counter("ourOwnCounter")
+      SparkEnv.get.metricsSystem.registerSource(customSource1)
+      val counter2  =  customSource2.counter("ourOwnCounter")
+      SparkEnv.get.metricsSystem.registerSource(customSource2)
 
 
 
@@ -39,7 +42,8 @@ object WordCount {
 
         println("time to complete is " + (System.currentTimeMillis - startTime))
 
-        counter.inc(1)
+        counter1.inc(1)
+        counter2.inc(1)
 
         Thread.sleep(4000)
       }

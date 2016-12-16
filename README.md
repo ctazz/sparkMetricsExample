@@ -1,6 +1,5 @@
 ###Purpose
 Show how to get application-specific metrics to show up along with Spark metrics.
-Abstract some basic DropWizard metrics for a project that may possibly use another metrics api in certain environments.
 
 ###Build it:
 sbt clean assembly
