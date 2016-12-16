@@ -12,7 +12,7 @@ object WordCount {
       conf.set("spark.metrics.conf", "src/main/resources/metrics.properties")
       val sc = new SparkContext(conf)
 
-      val customSource = new CustomSource
+      val customSource = new CustomSource("custom.subpath")
 
       //a metric must be created before its associated source registry is registered!
       val counter: metrics.Counter =  metrics.MetricsFactory.counter("ourOwnCounter"*5)

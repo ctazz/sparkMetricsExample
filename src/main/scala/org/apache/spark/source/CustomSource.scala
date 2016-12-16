@@ -3,14 +3,13 @@ package org.apache.spark.source
 
 import org.apache.spark.metrics.source.Source
 
-
-class CustomSource extends Source{
-
-  //This will appear in the metrics dot name. It will be the first name you have control over,
-  //after the spark information (e.g. local-1481836791890.driver.custom.metricName
-  override val sourceName = "custom"
+/**
+ *
+ * @param sourceName This value will appear in the dot name of your metrics.
+ *                   It will be the first name you have control over,
+ */
+class CustomSource(val sourceName: String) extends Source{
 
   override val metricRegistry =  metrics.BackDoor.locateMetricRegistry
-
 
 }
