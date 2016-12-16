@@ -69,7 +69,7 @@ private [metrics] case class DWHistogramWrapper(hist: NlGronsHistogram) extends 
 
 }
 
-private [metrics] case class DWGaugWrappere[T](gauge: NlGronsGauge[T]) extends Gauge[T]{
+private [metrics] case class DWGaugeWrapper[T](gauge: NlGronsGauge[T]) extends Gauge[T]{
 
   def value: T = gauge.value
 
@@ -85,7 +85,7 @@ object MetricsFactory  {
 
   def histogram(name: String): Histogram = DWHistogramWrapper( NlGrons.metrics.histogram(name, null)   )
 
-  def gauge[T](name: String)(f: =>T): Gauge[T] = DWGaugWrappere(NlGrons.metrics.gauge(name, null)(f))
+  def gauge[T](name: String)(f: =>T): Gauge[T] = DWGaugeWrapper(NlGrons.metrics.gauge(name, null)(f))
 
 
 }

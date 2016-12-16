@@ -37,7 +37,7 @@ object WordCount {
 
         counts.glom.foreach(_.foreach(x => println(x)))
 
-        println(System.currentTimeMillis - startTime)
+        println("time to complete is " + (System.currentTimeMillis - startTime))
 
         counter.inc(1)
 
